@@ -1,6 +1,6 @@
 import { body } from "express-validator";
 
-export const UserDeailsValidator = () => {
+export const UserDetailsValidator = () => {
   return [
     body("name")
       .isLength({ min: 3 })

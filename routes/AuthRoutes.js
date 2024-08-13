@@ -5,13 +5,13 @@ import {
   getUser,
   loginUser,
 } from "../controller/UserController.js";
-import { UserDeailsValidator } from "../validators/UserDetailsValidator.js";
+import { UserDetailsValidator } from "../validators/UserDetailsValidator.js";
 import { FetchUser } from "../middlewares/FetchUser.js";
 
 const router = express.Router();
 
 //? Signup API
-router.post("/signup", UserDeailsValidator(), createUser);
+router.post("/signup", UserDetailsValidator(), createUser);
 
 //? Login API
 router.post("/login", loginUser);
@@ -20,6 +20,6 @@ router.post("/login", loginUser);
 router.get("/getallusers", getAllUsers);
 
 //? Get a user API
-router.post("/getuser", FetchUser, getUser);
+router.get("/getuser", FetchUser, getUser);
 
 export default router;

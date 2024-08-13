@@ -1,8 +1,7 @@
 import { validationResult } from "express-validator";
-import UserModel from "../models/UserModel.js";
+import UserModel from "./../models/UserModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-// import MessDetialsModel from "../models/MessDetailsModel.js";
 
 //* Create a User
 export const createUser = async (req, res) => {
@@ -133,89 +132,5 @@ export const getUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.json({ status: "failure", error: error.message });
-  }
-};
-
-// //* Login mess manager
-// export const loginMessManager = async (req, res, next) => {
-//   try {
-//     if (req.body.type === 1) {
-//       console.log("Login User function Called for manager (/user/login)");
-//       const { password } = await req.body;
-//       let email1 = await req.body.email;
-//       let email = email1.toLowerCase();
-
-//       const user = await UserModel.findOne({ email });
-//       if (user) {
-//         if (await bcrypt.compare(password, user.password)) {
-//           const data = {
-//             user: {
-//               id: user.id,
-//               type: user.type,
-//             },
-//           };
-
-//           const jwtData = jwt.sign(data, process.env.JWT_SECRET);
-//           res.status(200).json({
-//             code: 200,
-//             status: "success",
-//             message: "Manager logged in successfully",
-//             data: { authToken: jwtData, name: user.name, email: user.email },
-//           });
-//         }
-//       } else {
-//         res.status(200).json({
-//           code: 200,
-//           status: "failure",
-//           message: "Manager not found",
-//           data: { message: "Manager not found" },
-//         });
-//         console.log("Login User function Finished for manager (/user/login)");
-//       }
-//     } else {
-//       next();
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({
-//       code: 500,
-//       status: "failure",
-//       message: "Something went wrong",
-//       data: { message: "Something went wrong" },
-//     });
-//   }
-// };
-
-//? get mess details
-export const getmessdetails = async (req, res) => {
-  try {
-    // console.log("Get Mess Details function Called (/user/messdetails)");
-    // const messdetails = await MessDetialsModel.find()
-    // if (messdetails.length > 0) {
-    //   res.status(200).json({
-    //     code: 200,
-    //     status: "success",
-    //     length: messdetails.length,
-    //     message: "Mess details fetched",
-    //     data: { messdetails },
-    //   });
-    // }
-    // else {
-    //   res.status(404).json({
-    //     code: 404,
-    //     status: "failure",
-    //     message: "Mess details not found",
-    //     data: { message: "Mess details not found", },
-    //   });
-    // }
-    // console.log("Get Mess Details function Finished (/user/messdetails)");
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      code: 500,
-      status: "failure",
-      message: "Something went wrong",
-      data: { message: "Something went wrong" },
-    });
   }
 };
